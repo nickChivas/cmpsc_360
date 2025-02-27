@@ -39,7 +39,7 @@
                      <center>
                         <TextArea fx:id="matrix1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" promptText="Enter matrix 1" wrapText="true" BorderPane.alignment="CENTER">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="24.0" />
                            </font></TextArea>
                      </center>
                      <left>
@@ -73,7 +73,7 @@
                      <center>
                         <TextArea fx:id="matrix2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" promptText="Enter matrix 2" wrapText="true" BorderPane.alignment="CENTER">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="24.0" />
                            </font></TextArea>
                      </center>
                      <left>
