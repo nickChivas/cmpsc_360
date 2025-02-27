@@ -21,7 +21,7 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
-    scene = new Scene(loadFXML("primary"), 768, 576);
+    scene = new Scene(loadFXML("primary"), 960, 600);
     stage.setScene(scene);
     stage.setTitle("Matrix Multiplication");
     stage.setResizable(false);
