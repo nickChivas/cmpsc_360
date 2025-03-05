@@ -21,21 +21,16 @@ public class MatrixMultiplication {
 
     // Do not multiply if the number of columns in the first matrix is not equal
     // to the number of rows in the second matrix.
-    if (matrix1[1].length != matrix2[0].length) {
-      throw new IllegalArgumentException("Invalid dimensions.");
-    }
+    //if (matrix1[1].length != matrix2[0].length) {
+    //  throw new IllegalArgumentException("Invalid dimensions.");
+   //}
 
-    // Iterate once per column.
     for (int column = 0; column < productMatrix[0].length; column++) {
-      // For every row...
       for (int row = 0; row < productMatrix[0].length; row++) {
-        // ...iterate {length} times per row.
         int i = 0;
-        // Create an array for all the products.
         int[] thisRow = new int[productMatrix.length];
-        for (int row2 = 0; row2 < productMatrix.length; row2++) {
-          // Take the product and enter it in the array.
-          thisRow[i] = matrix1[row2][column] * matrix2[row][row2];
+        for (int item = 0; item < productMatrix.length; item++) {
+          thisRow[i] = matrix1[item][column] * matrix2[row][item];
           // Repeat for all entries in the row.
           i++;
         }
@@ -46,7 +41,7 @@ public class MatrixMultiplication {
         }
         // If the array has sum >= 1, then the value of the cell is 1.
         if (sum >= 1) {
-          productMatrix[column][row] = 1;
+          productMatrix[column][row] = sum;
         } else {
           productMatrix[column][row] = 0;
         }

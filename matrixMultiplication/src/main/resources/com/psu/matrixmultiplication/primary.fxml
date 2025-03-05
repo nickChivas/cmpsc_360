@@ -37,7 +37,7 @@
                <left>
                   <BorderPane prefHeight="294.0" prefWidth="294.0" BorderPane.alignment="CENTER">
                      <center>
-                        <TextArea fx:id="matrix1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" promptText="Enter matrix 1" wrapText="true" BorderPane.alignment="CENTER">
+                        <TextArea fx:id="matrix1Text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" promptText="Enter matrix 1" wrapText="false" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font></TextArea>
@@ -71,7 +71,7 @@
                <left>
                   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="294.0" prefWidth="294.0" BorderPane.alignment="CENTER">
                      <center>
-                        <TextArea fx:id="matrix2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" promptText="Enter matrix 2" wrapText="true" BorderPane.alignment="CENTER">
+                        <TextArea fx:id="matrix2Text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" promptText="Enter matrix 2" wrapText="true" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font></TextArea>
@@ -103,17 +103,12 @@
          <bottom>
             <ToolBar prefHeight="16.0" prefWidth="820.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" text="RESET">
+                <Button mnemonicParsing="false" onAction="#handleResetButton" text="RESET">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="RANDOMIZE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="START">
+                  <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleStartButton" text="START">
                      <font>
                         <Font size="15.0" />
                      </font>
