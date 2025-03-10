@@ -30,6 +30,9 @@ public class MatrixMultiplication {
         int i = 0;
         int[] thisRow = new int[productMatrix.length];
         for (int item = 0; item < productMatrix.length; item++) {
+            if (thisRow[i] < 0 | thisRow[i] > 9) {
+                throw new IllegalArgumentException("Invalid inputs.");
+            }
           thisRow[i] = matrix1[item][column] * matrix2[row][item];
           // Repeat for all entries in the row.
           i++;
@@ -41,7 +44,7 @@ public class MatrixMultiplication {
         }
         // If the array has sum >= 1, then the value of the cell is 1.
         if (sum >= 1) {
-          productMatrix[column][row] = sum;
+          productMatrix[column][row] = 1;
         } else {
           productMatrix[column][row] = 0;
         }

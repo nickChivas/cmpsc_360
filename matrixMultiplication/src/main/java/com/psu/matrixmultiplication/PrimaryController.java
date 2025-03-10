@@ -61,11 +61,16 @@ public class PrimaryController {
             // Print the product matrix
             System.out.println("Product Matrix: " + Arrays.deepToString(productMatrix));
             
-            Parent animationScene = FXMLLoader.load(getClass().getResource("animation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("animation.fxml"));
+            Parent animationScene = loader.load();
+            
+            // Get the controller and pass the product matrix to it
+            AnimationController animationController = loader.getController();
+            animationController.setMatrices(matrix1Nums, matrix2Nums, productMatrix);
+            
             Scene newScene = new Scene(animationScene, 960, 600);
             
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            
             currentStage.setScene(newScene);
             currentStage.show();
         } catch (InvalidFormatException | UnequalRowLengthException | UnequalDimensionsException e) {
@@ -115,7 +120,7 @@ public class PrimaryController {
     private void addInputFilter(TextArea textArea) {
         textArea.addEventFilter(KeyEvent.KEY_TYPED, event -> {
             String character = event.getCharacter();
-            if (!character.matches("[0-9,\n]")) {
+            if (!character.matches("[0-1,\n]")) {
                 event.consume();
             }
         });
