@@ -105,6 +105,7 @@ public class MatrixInputController implements Initializable {
                 Button button = new Button("0");
                 button.setStyle("-fx-font-size: 24px;");
                 button.setPrefSize(buttonSize, buttonSize);
+                button.setOnAction(this::handleMatrixButtonClick);
                 matrix.add(button, col, row);
             }
         }
