@@ -19,6 +19,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
+/**
+ * This class is responsible for handling user input for matrix configuration.
+ * It allows users to resize matrices, set values, and start the animation.
+ *
+ * @author nicho
+ */
 public class MatrixInputController implements Initializable {
 
     @FXML
@@ -51,6 +57,12 @@ public class MatrixInputController implements Initializable {
     private int[][] matrixA_Array;
     private int[][] matrixB_Array;
 
+    /**
+     * Handles the resize button click event and resizes the matrices
+     * accordingly
+     *
+     * @param event
+     */
     @FXML
     public void handleResizeButtonClick(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
@@ -98,6 +110,11 @@ public class MatrixInputController implements Initializable {
         }
     }
 
+    /**
+     * Changes the node in the matrix to 1 or 0.
+     *
+     * @param event
+     */
     @FXML
     public void handleMatrixButtonClick(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
@@ -108,6 +125,11 @@ public class MatrixInputController implements Initializable {
         }
     }
 
+    /**
+     * Handles the clicking of the reset button, changes all nodes to 0.
+     *
+     * @param event
+     */
     @FXML
     public void handleResetButtonClick(ActionEvent event) {
         matrixA.getChildren().forEach(node -> {
@@ -123,6 +145,11 @@ public class MatrixInputController implements Initializable {
         });
     }
 
+    /**
+     * Handles the clicking of the random button.
+     *
+     * @param event
+     */
     @FXML
     public void handleRandomButtonClick(ActionEvent event) {
         matrixA.getChildren().forEach(node -> {
@@ -142,6 +169,14 @@ public class MatrixInputController implements Initializable {
         });
     }
 
+    /**
+     * Handles the clicking of the start button by loading a new scene and
+     * initializing the necessary variables.
+     *
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @FXML
     public void handleStartButtonClick(ActionEvent event) throws IOException, InterruptedException {
         try {
@@ -190,6 +225,12 @@ public class MatrixInputController implements Initializable {
         return matrix;
     }
 
+    /**
+     * Initializes the matrices to be the proper size.
+     *
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         resizeMatrix(matrixA);

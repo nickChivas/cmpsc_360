@@ -1,4 +1,4 @@
-package code.binarymatrixmultiplication;
+package code.truthtablebuilder;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,24 +9,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Main application class for the Binary Matrix Multiplication project. Launches
- * the JavaFX application and sets the initial scene.
+ * JavaFX App
  */
 public class App extends Application {
 
     private static Scene scene;
 
-    /**
-     * Starts the JavaFX application.
-     *
-     * @param stage
-     * @throws IOException
-     */
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("MatrixInput"), 1280, 720);
+        scene = new Scene(loadFXML("primary"), 1280, 720);
         stage.setScene(scene);
-        stage.setTitle("Binary Matrix Multiplication");
+        stage.setTitle("Truth Table Builder");
         stage.setResizable(false);
         stage.show();
     }
@@ -40,11 +33,6 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    /**
-     * The main method to launch the application.
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         launch();
     }

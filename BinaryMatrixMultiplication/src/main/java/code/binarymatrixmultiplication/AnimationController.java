@@ -20,6 +20,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
+/**
+ * This class is responsible for controlling the animation of binary matrix
+ * multiplication. It handles the resizing and display of matrices, as well as
+ * the animation logic.
+ *
+ * @author nicho
+ */
 public class AnimationController {
 
     @FXML
@@ -44,6 +51,13 @@ public class AnimationController {
     private int[][] matrixB_Array;
     private int[][] productMatrix_Array;
 
+    /**
+     * Navigates back to the main screen when the return button is clicked.
+     *
+     * @param event is the action event triggered by the return button.
+     * @throws IOException if there is an error loading the FXML for the main
+     * screen.
+     */
     @FXML
     public void returnToMainScreen(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MatrixInput.fxml"));
@@ -57,6 +71,12 @@ public class AnimationController {
         currentStage.show();
     }
 
+    /**
+     * Resizes the given matrix GridPane to fit the current number of rows and
+     * columns.
+     *
+     * @param matrix The GridPane to resize.
+     */
     private void resizeMatrix(GridPane matrix) {
         matrix.getChildren().clear();
         matrix.getColumnConstraints().clear();
@@ -88,6 +108,9 @@ public class AnimationController {
         }
     }
 
+    /**
+     * Resizes the grid used to display intermediate sums during the animation.
+     */
     private void resizeGridOfSums() {
         gridOfSums.getChildren().clear();
 
@@ -96,9 +119,17 @@ public class AnimationController {
             gridOfSums.addColumn(i, thisLabel);
             GridPane.setMargin(thisLabel, new Insets(30));
         }
+        gridOfSums.setPrefWidth(450);
         gridOfSums.setGridLinesVisible(true);
     }
 
+    /**
+     * Displays the given matrices and starts the animation process.
+     *
+     * @param matrixA_Array
+     * @param matrixB_Array
+     * @throws InterruptedException
+     */
     public void displayMatrices(int[][] matrixA_Array, int[][] matrixB_Array) throws InterruptedException {
         resizeMatrix(matrixA);
         resizeMatrix(matrixB);
@@ -138,6 +169,13 @@ public class AnimationController {
         }
     }
 
+    /**
+     * Takes two matrices and returns their product.
+     *
+     * @param matrixA_Array
+     * @param matrixB_Array
+     * @return
+     */
     public int[][] multiplyMatrices(int[][] matrixA_Array, int[][] matrixB_Array) {
         productMatrix_Array = new int[MATRIX_ROWS][MATRIX_COLUMNS];
         for (int column = 0; column < MATRIX_COLUMNS; column++) {
@@ -159,6 +197,11 @@ public class AnimationController {
         return productMatrix_Array;
     }
 
+    /**
+     * Handles all animation events.
+     *
+     * @throws InterruptedException
+     */
     public void startAnimation() throws InterruptedException {
         Button[][] matrixA_Buttons = convertGridToArrayOfButtons(matrixA);
         Button[][] matrixB_Buttons = convertGridToArrayOfButtons(matrixB);
@@ -192,6 +235,7 @@ public class AnimationController {
                         gridOfSums.setGridLinesVisible(true);
                         Label thisLabel = (Label) gridOfSums.getChildren().get(labelIndex);
                         String stringToDisplay = currentButtonA.getText() + " x " + currentButtonB.getText() + " = " + quickBinaryMultiplication(currentButtonA.getText(), currentButtonB.getText());
+                        System.out.println(stringToDisplay);
                         KeyFrame updateLabel = new KeyFrame(currentItemStartTime, new KeyValue(thisLabel.textProperty(), stringToDisplay));
                         animation.getKeyFrames().add(updateLabel);
                     }
@@ -222,6 +266,12 @@ public class AnimationController {
         animation.play();
     }
 
+    /**
+     * Converts any grid into an array of buttons.
+     *
+     * @param grid
+     * @return
+     */
     public Button[][] convertGridToArrayOfButtons(GridPane grid) {
         int currentRow = 0;
         int currentColumn = 0;
@@ -247,26 +297,56 @@ public class AnimationController {
         return 0;
     }
 
+    /**
+     * Sets the first matrix.
+     *
+     * @param matrixA
+     */
     public void setMatrixA(GridPane matrixA) {
         this.matrixA = matrixA;
     }
 
+    /**
+     * Sets the second matrix.
+     *
+     * @param matrixB
+     */
     public void setMatrixB(GridPane matrixB) {
         this.matrixB = matrixB;
     }
 
+    /**
+     * Sets the array in the first matrix.
+     *
+     * @param matrixA_Array
+     */
     public void setMatrixA_Array(int[][] matrixA_Array) {
         this.matrixA_Array = matrixA_Array;
     }
 
+    /**
+     * Sets the array in the second matrix.
+     *
+     * @param matrixB_Array
+     */
     public void setMatrixB_Array(int[][] matrixB_Array) {
         this.matrixB_Array = matrixB_Array;
     }
 
+    /**
+     * Sets the number of matrix rows.
+     *
+     * @param MATRIX_ROWS
+     */
     public void setMATRIX_ROWS(int MATRIX_ROWS) {
         this.MATRIX_ROWS = MATRIX_ROWS;
     }
 
+    /**
+     * Sets the number of matrix columns.
+     *
+     * @param MATRIX_COLUMNS
+     */
     public void setMATRIX_COLUMNS(int MATRIX_COLUMNS) {
         this.MATRIX_COLUMNS = MATRIX_COLUMNS;
     }
