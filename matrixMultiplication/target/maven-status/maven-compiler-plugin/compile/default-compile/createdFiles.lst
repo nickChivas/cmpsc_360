@@ -1,8 +1,0 @@
-com\psu\matrixmultiplication\App.class
-exceptions\InvalidFormatException.class
-exceptions\UnequalDimensionsException.class
-module-info.class
-exceptions\UnequalRowLengthException.class
-com\psu\matrixmultiplication\AnimationController.class
-com\psu\matrixmultiplication\PrimaryController.class
-program\MatrixMultiplication.class
