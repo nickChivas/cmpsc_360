@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.visualcountingproblems.ComplementController">
+   <top>
+      <Label text="Counting by Complement" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Cambria Math" size="36.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="25.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <Button fx:id="returnButton" mnemonicParsing="false" onAction="#handleReturnButtonClick" text="Return" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="25.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Question" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="25.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Cambria Math" size="24.0" />
+               </font>
+            </Label>
+         </top>
+      </BorderPane>
+   </center>
+</BorderPane>

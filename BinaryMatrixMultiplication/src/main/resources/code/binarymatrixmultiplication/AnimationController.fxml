@@ -321,14 +321,14 @@
       </Label>
    </top>
    <bottom>
-      <Pane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="root" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="returnButton" layoutX="595.0" layoutY="31.0" mnemonicParsing="false" onAction="#returnToMainScreen" text="RETURN">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <GridPane fx:id="gridOfSums" alignment="CENTER" gridLinesVisible="true" layoutX="805.0" layoutY="35.0" prefHeight="30.0" prefWidth="367.0">
+            <GridPane fx:id="gridOfSums" alignment="CENTER" gridLinesVisible="true" layoutX="340.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

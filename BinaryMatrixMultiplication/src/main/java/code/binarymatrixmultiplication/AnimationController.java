@@ -1,6 +1,7 @@
 package code.binarymatrixmultiplication;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.util.Duration;
 import java.util.Arrays;
 import javafx.animation.KeyFrame;
@@ -17,7 +18,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +42,8 @@ public class AnimationController {
     Button returnButton;
     @FXML
     GridPane gridOfSums;
+    @FXML
+    Pane root;
 
     private static final double GRID_WIDTH = 240;
     private static final double GRID_HEIGHT = 380;
@@ -211,10 +216,11 @@ public class AnimationController {
         Button currentButtonA = null;
         Button currentButtonB = null;
         Button currentButtonProduct;
+
         for (int column = 0; column < MATRIX_COLUMNS; column++) {
+            gridOfSums.layout();
             for (int row = 0; row < MATRIX_ROWS; row++) {
                 for (int item = 0; item < MATRIX_COLUMNS; item++) {
-
                     String defaultStyle = matrixA_Buttons[row][item].getStyle();
                     String updatedStyle = "-fx-base: #ff0000; -fx-font-size: 24px;";
                     currentButtonA = matrixA_Buttons[column][item];
@@ -234,8 +240,9 @@ public class AnimationController {
                     if (labelIndex < gridOfSums.getChildren().size() && gridOfSums.getChildren().get(labelIndex) instanceof Label) {
                         gridOfSums.setGridLinesVisible(true);
                         Label thisLabel = (Label) gridOfSums.getChildren().get(labelIndex);
-                        String stringToDisplay = currentButtonA.getText() + " x " + currentButtonB.getText() + " = " + quickBinaryMultiplication(currentButtonA.getText(), currentButtonB.getText());
-                        System.out.println(stringToDisplay);
+                        thisLabel.setFont(new Font("Arial", 20));
+                        int product = quickBinaryMultiplication(currentButtonA.getText(), currentButtonB.getText());
+                        String stringToDisplay = currentButtonA.getText() + " x " + currentButtonB.getText() + " = " + product;
                         KeyFrame updateLabel = new KeyFrame(currentItemStartTime, new KeyValue(thisLabel.textProperty(), stringToDisplay));
                         animation.getKeyFrames().add(updateLabel);
                     }
@@ -245,15 +252,16 @@ public class AnimationController {
                 currentButtonProduct = productMatrix_Buttons[column][row];
                 KeyFrame revealSumOfProducts = new KeyFrame(revealTime, new KeyValue(currentButtonProduct.visibleProperty(), true));
                 animation.getKeyFrames().add(revealSumOfProducts);
+
                 for (Object child : gridOfSums.getChildren()) {
                     if (child instanceof Label) {
                         Label thisLabel = (Label) child;
-                        KeyFrame removeLabel = new KeyFrame(revealTime, new KeyValue(thisLabel.textProperty(), ""));
+                        KeyFrame removeLabel = new KeyFrame(revealTime.add(Duration.seconds(2)), new KeyValue(thisLabel.textProperty(), ""));
                         animation.getKeyFrames().add(removeLabel);
                     }
                 }
 
-                Duration nextStartTime = revealTime.add(Duration.seconds(1));
+                Duration nextStartTime = revealTime.add(Duration.seconds(3));
                 KeyFrame emptyKeyFrame = new KeyFrame(nextStartTime);
                 animation.getKeyFrames().add(emptyKeyFrame);
 
@@ -262,6 +270,8 @@ public class AnimationController {
             }
         }
         KeyFrame revealReturnButton = new KeyFrame(startTime, new KeyValue(returnButton.visibleProperty(), true));
+        KeyFrame hideGridOfSums = new KeyFrame(startTime, new KeyValue(gridOfSums.visibleProperty(), false));
+        animation.getKeyFrames().add(hideGridOfSums);
         animation.getKeyFrames().add(revealReturnButton);
         animation.play();
     }
